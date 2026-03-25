@@ -1,6 +1,8 @@
+import 'package:fifth_onboarding_screen/onboarding/data/onboarding_data.dart';
 import 'package:fifth_onboarding_screen/utils/constants/app_icons.dart';
 import 'package:fifth_onboarding_screen/utils/constants/app_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -10,6 +12,9 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageCtrl = PageController();
+  int _pageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +79,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 30),
 
             /// Dot Indicator
+            SmoothPageIndicator(
+              controller: _pageCtrl,
+              count: onboardingData.length,
+              onDotClicked: (index) {},
+              effect: JumpingDotEffect(verticalOffset: 2),
+            ),
+            Spacer(),
 
             /// Next Button
             SizedBox(
