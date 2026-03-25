@@ -40,7 +40,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 50),
 
             /// Icon
-            Image(image: AssetImage(AppIcons.kOnboarding_icon1)),
+            Image(
+              image: AssetImage(AppIcons.kOnboarding_icon4),
+              height: 280,
+              width: 280,
+            ),
             const SizedBox(height: 50),
 
             /// Title
