@@ -24,7 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             /// Skip Button Widget
-            SkipButtonWidget(onSkipPress: onButtonPress),
+            SkipButtonWidget(onSkipPress: () => onButtonPress(true)),
             const SizedBox(height: 50),
 
             /// Onboarding Data
@@ -39,7 +39,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             /// Next Button
             NextButtonWidget(
-              onNextPressed: onButtonPress,
+              onNextPressed: () => onButtonPress(false),
               isLastPage: (_pageIndex == 3),
             ),
           ],
@@ -48,8 +48,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void onButtonPress() {
-    //if (){} else {}
+  /// Button Press
+  void onButtonPress(bool isSkipPress) {
+    /// Skip Press
+    if (isSkipPress) {
+      _pageCtrl.animateToPage(
+        3,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
+    /// Next Press
+    if (_pageIndex == 3) {
+      debugPrint("Replace");
+    } else {
+      _pageCtrl.nextPage(
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   /// Dot Clicked
