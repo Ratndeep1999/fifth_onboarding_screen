@@ -18,8 +18,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -44,39 +44,52 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             const SizedBox(height: 20),
 
-            /// Icon
-            Image(
-              image: AssetImage(AppIcons.kOnboarding_icon4),
-              height: 280,
-              width: 280,
-            ),
-            const SizedBox(height: 50),
+            /// Onboarding Data
+            Expanded(
+              child: PageView.builder(
+                controller: _pageCtrl,
+                onPageChanged: (index) {},
+                itemCount: onboardingData.length,
+                itemBuilder: (ctx, index) {
+                  return Column(
+                    children: [
+                      /// Icon
+                      Image(
+                        image: AssetImage(onboardingData[index].icon),
+                        height: 180,
+                        width: 180,
+                      ),
+                      const SizedBox(height: 50),
 
-            /// Title
-            Text(
-              AppTexts.kOnBoardingTitle1,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w500,
-                color: Colors.purple.shade400,
-                letterSpacing: 1,
+                      /// Title
+                      Text(
+                        AppTexts.kOnBoardingTitle1,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.purple.shade400,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      /// Description
+                      Text(
+                        AppTexts.kOnBoardingDesc1,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.purple.shade200,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w300,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
-            const SizedBox(height: 20),
-
-            /// Description
-            Text(
-              AppTexts.kOnBoardingDesc1,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.purple.shade200,
-                fontSize: 18,
-                fontWeight: FontWeight.w300,
-                letterSpacing: 1.5,
-              ),
-            ),
-            const SizedBox(height: 30),
 
             /// Dot Indicator
             SmoothPageIndicator(
@@ -85,7 +98,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onDotClicked: (index) {},
               effect: JumpingDotEffect(verticalOffset: 2),
             ),
-            Spacer(),
 
             /// Next Button
             SizedBox(
