@@ -24,28 +24,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             /// Skip Button Widget
-            SkipButtonWidget(onSkipPress: () {}),
+            SkipButtonWidget(onSkipPress: onButtonPress),
             const SizedBox(height: 50),
 
             /// Onboarding Data
             OnboardingDataWidget(
               pageCtrl: _pageCtrl,
-              onPageChanged: (index) {},
+              onPageChanged: (index) => setState(() => _pageIndex = index),
             ),
 
             /// Dot Indicator
-            DotIndicatorWidget(
-              pageCtrl: _pageCtrl,
-              onDotClicked: (index) {},
-              isActive: false,
-            ),
+            DotIndicatorWidget(pageCtrl: _pageCtrl, onDotClicked: onDotClicked),
             SizedBox(height: 150.0),
 
             /// Next Button
-            NextButtonWidget(onNextPressed: () {}, isLastPage: false),
+            NextButtonWidget(
+              onNextPressed: onButtonPress,
+              isLastPage: (_pageIndex == 3),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  void onButtonPress() {
+    //if (){} else {}
+  }
+
+  /// Dot Clicked
+  void onDotClicked(int index) {
+    _pageCtrl.animateToPage(
+      index,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 }
