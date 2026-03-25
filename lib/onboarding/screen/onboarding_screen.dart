@@ -34,19 +34,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
 
             /// Dot Indicator
-            DotIndicatorWidget(pageCtrl: _pageCtrl, onDotClicked: (index) {}),
+            DotIndicatorWidget(
+              pageCtrl: _pageCtrl,
+              onDotClicked: (index) {},
+              isActive: false,
+            ),
             SizedBox(height: 150.0),
 
             /// Next Button
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () => debugPrint("Next Press"),
-                child: Text(true ? "Get Started" : "Next"),
-              ),
-            ),
+            NextButtonWidget(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NextButtonWidget extends StatelessWidget {
+  const NextButtonWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: FilledButton(
+        onPressed: () => debugPrint("Next Press"),
+        child: Text(true ? "Get Started" : "Next"),
       ),
     );
   }
@@ -57,10 +70,12 @@ class DotIndicatorWidget extends StatelessWidget {
     super.key,
     required PageController pageCtrl,
     required this.onDotClicked,
+    required this.isActive,
   }) : _pageCtrl = pageCtrl;
 
   final PageController _pageCtrl;
   final Function(int) onDotClicked;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +83,14 @@ class DotIndicatorWidget extends StatelessWidget {
       controller: _pageCtrl,
       count: onboardingData.length,
       onDotClicked: (index) => onDotClicked(index),
-      effect: JumpingDotEffect(verticalOffset: 2),
+      effect: JumpingDotEffect(
+        verticalOffset: 16.0,
+        spacing: 16.0,
+        dotHeight: 6.0,
+        dotWidth: false ? 50.0 : 24.0,
+        dotColor: Colors.purple.shade100,
+        activeDotColor: Colors.purple,
+      ),
     );
   }
 }
