@@ -34,12 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
 
             /// Dot Indicator
-            SmoothPageIndicator(
-              controller: _pageCtrl,
-              count: onboardingData.length,
-              onDotClicked: (index) {},
-              effect: JumpingDotEffect(verticalOffset: 2),
-            ),
+            DotIndicatorWidget(pageCtrl: _pageCtrl, onDotClicked: (index) {}),
             SizedBox(height: 150.0),
 
             /// Next Button
@@ -53,6 +48,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class DotIndicatorWidget extends StatelessWidget {
+  const DotIndicatorWidget({
+    super.key,
+    required PageController pageCtrl,
+    required this.onDotClicked,
+  }) : _pageCtrl = pageCtrl;
+
+  final PageController _pageCtrl;
+  final Function(int) onDotClicked;
+
+  @override
+  Widget build(BuildContext context) {
+    return SmoothPageIndicator(
+      controller: _pageCtrl,
+      count: onboardingData.length,
+      onDotClicked: (index) => onDotClicked(index),
+      effect: JumpingDotEffect(verticalOffset: 2),
     );
   }
 }
