@@ -71,13 +71,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 letterSpacing: 1.5,
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
 
             /// Dot Indicator
 
             /// Next Button
             SizedBox(
-              child: FilledButton(onPressed: () {}, child: Text("Next")),
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: () => debugPrint("Next Press"),
+                child: Text(true ? "Get Started" : "Next"),
+              ),
             ),
           ],
         ),
