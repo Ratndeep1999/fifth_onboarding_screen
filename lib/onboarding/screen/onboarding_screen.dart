@@ -58,16 +58,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 letterSpacing: 1,
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 20),
 
             /// Description
-            Text(AppTexts.kOnBoardingDesc1),
+            Text(
+              AppTexts.kOnBoardingDesc1,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.purple.shade200,
+                fontSize: 18,
+                fontWeight: FontWeight.w300,
+                letterSpacing: 1.5,
+              ),
+            ),
             const SizedBox(height: 50),
 
             /// Dot Indicator
 
             /// Next Button
-            FilledButton(onPressed: () {}, child: Text("Next")),
+            SizedBox(
+              child: FilledButton(onPressed: () {}, child: Text("Next")),
+            ),
           ],
         ),
       ),
