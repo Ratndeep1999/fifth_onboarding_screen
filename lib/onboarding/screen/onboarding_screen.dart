@@ -10,6 +10,23 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Column(
+        children: [
+          /// Skip Button
+          Text("data"),
+
+          /// Icon
+
+          /// Title
+
+          /// Description
+
+          /// Dot Indicator
+
+          /// Next Button
+        ],
+      ),
+    );
   }
 }
