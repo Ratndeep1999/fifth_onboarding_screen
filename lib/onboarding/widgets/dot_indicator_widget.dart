@@ -7,12 +7,10 @@ class DotIndicatorWidget extends StatelessWidget {
     super.key,
     required PageController pageCtrl,
     required this.onDotClicked,
-    required this.isActive,
   }) : _pageCtrl = pageCtrl;
 
   final PageController _pageCtrl;
   final Function(int) onDotClicked;
-  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +18,11 @@ class DotIndicatorWidget extends StatelessWidget {
       controller: _pageCtrl,
       count: onboardingData.length,
       onDotClicked: (index) => onDotClicked(index),
-      effect: JumpingDotEffect(
-        verticalOffset: 16.0,
+      effect: ExpandingDotsEffect(
         spacing: 16.0,
         dotHeight: 6.0,
-        dotWidth: false ? 50.0 : 24.0,
+        dotWidth: 16.0,
+        expansionFactor: 3.0,
         dotColor: Colors.purple.shade100,
         activeDotColor: Colors.purple,
       ),
