@@ -1,3 +1,4 @@
+import 'package:fifth_onboarding_screen/onboarding/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
