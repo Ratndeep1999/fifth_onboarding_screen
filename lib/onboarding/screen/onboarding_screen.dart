@@ -29,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   "Skip",
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.italic,
                     letterSpacing: 1,
@@ -37,7 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 20),
 
             /// Icon
             Image(
@@ -48,7 +48,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 50),
 
             /// Title
-            Text(AppTexts.kOnBoardingTitle1),
+            Text(
+              AppTexts.kOnBoardingTitle1,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w500,
+                color: Colors.purple.shade400,
+                letterSpacing: 1,
+              ),
+            ),
             const SizedBox(height: 50),
 
             /// Description
