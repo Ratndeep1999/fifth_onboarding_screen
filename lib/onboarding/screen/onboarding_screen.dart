@@ -1,3 +1,5 @@
+import 'package:fifth_onboarding_screen/utils/constants/app_icons.dart';
+import 'package:fifth_onboarding_screen/utils/constants/app_texts.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -11,21 +13,50 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          /// Skip Button
-          Text("data"),
+      body: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 50),
 
-          /// Icon
+            /// Skip Button
+            Align(
+              alignment: AlignmentGeometry.topRight,
+              child: TextButton(
+                onPressed: () => debugPrint("Skip Press"),
+                child: Text(
+                  "Skip",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.italic,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 50),
 
-          /// Title
+            /// Icon
+            Image(image: AssetImage(AppIcons.kOnboarding_icon1)),
+            const SizedBox(height: 50),
 
-          /// Description
+            /// Title
+            Text(AppTexts.kOnBoardingTitle1),
+            const SizedBox(height: 50),
 
-          /// Dot Indicator
+            /// Description
+            Text(AppTexts.kOnBoardingDesc1),
+            const SizedBox(height: 50),
 
-          /// Next Button
-        ],
+            /// Dot Indicator
+
+            /// Next Button
+            FilledButton(onPressed: () {}, child: Text("Next")),
+          ],
+        ),
       ),
     );
   }
