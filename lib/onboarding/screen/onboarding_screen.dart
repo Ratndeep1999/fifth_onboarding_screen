@@ -26,22 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 50),
 
             /// Skip Button
-            Align(
-              alignment: AlignmentGeometry.topRight,
-              child: TextButton(
-                onPressed: () => debugPrint("Skip Press"),
-                child: Text(
-                  "Skip",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.italic,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
+            SkipButtonWidget(onSkipPress: () {}),
             const SizedBox(height: 20),
 
             /// Onboarding Data
@@ -108,6 +93,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SkipButtonWidget extends StatelessWidget {
+  final VoidCallback onSkipPress;
+
+  const SkipButtonWidget({super.key, required this.onSkipPress});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: AlignmentGeometry.topRight,
+      child: TextButton(
+        onPressed: onSkipPress,
+        child: Text(
+          "Skip",
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.italic,
+            letterSpacing: 1,
+          ),
         ),
       ),
     );
