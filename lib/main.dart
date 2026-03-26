@@ -5,5 +5,5 @@ import 'core/app/app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final isSeen = await SharedPrefService.getOnboardingStatus();
-  runApp(const App(isSeen: isSeen));
+  runApp(App(isSeen: isSeen));
 }
