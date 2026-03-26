@@ -1,7 +1,9 @@
+import 'package:fifth_onboarding_screen/core/services/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'core/app/app.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const App());
+  final isSeen = await SharedPrefService.getOnboardingStatus();
+  runApp(const App(isSeen: isSeen));
 }
