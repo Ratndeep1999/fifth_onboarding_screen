@@ -1,7 +1,9 @@
+import 'package:fifth_onboarding_screen/core/services/shared_pref_service.dart';
 import 'package:fifth_onboarding_screen/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:fifth_onboarding_screen/onboarding/widgets/next_button_widget.dart';
 import 'package:fifth_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
 import 'package:fifth_onboarding_screen/onboarding/widgets/skip_button_widget.dart';
+import 'package:fifth_onboarding_screen/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -62,7 +64,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     /// Next Press
     if (_pageIndex == 3) {
-      debugPrint("Replace");
+      /// Save Onboarding State
+      SharedPrefService.setOnboardingStatus();
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
     } else {
       _pageCtrl.nextPage(
         duration: Duration(milliseconds: 500),
