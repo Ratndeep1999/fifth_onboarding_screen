@@ -1,3 +1,4 @@
+import 'package:fifth_onboarding_screen/core/services/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,7 +14,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: ElevatedButton(onPressed: () {}, child: Text("Clear State")),
+          child: ElevatedButton(
+            onPressed: SharedPrefService.clearOnboardingState,
+            child: Text("Clear State"),
+          ),
         ),
       ),
     );
